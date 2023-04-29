@@ -1,0 +1,409 @@
+/* Base Styles */
+@import "base/reset";
+@import "base/variables";
+@import "base/mixins";
+
+/* Global Styles */
+@import "global/typography";
+@import "global/layout";
+@import "global/forms";
+@import "global/buttons";
+@import "global/tables";
+@import "global/modals";
+@import "global/toasts";
+@import "global/animations";
+@import "global/utils";
+
+/* Component Styles */
+@import "components/header";
+@import "components/property-card";
+@import "components/property-details";
+@import "components/search-bar";
+@import "components/login-form";
+@import "components/signup-form";
+@import "components/navbar";
+@import "components/dashboard";
+
+/* Page Styles */
+@import "pages/home";
+@import "pages/properties";
+@import "pages/login";
+@import "pages/signup";
+
+/* Base styles */
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0px 30px 2px 0px;
+  box-sizing: border-box;
+}
+
+/* Set default font and color */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Set a max width for the page content */
+.container {
+  max-width: 1200px;
+  min-height: 430px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Set styles for links */
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #555;
+}
+
+/* Set styles for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+}
+
+/* Set styles for paragraphs */
+p {
+  margin-bottom: 20px;
+}
+
+/* Global styles */
+
+/* Set default font family and size */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+/* Set default background color */
+body {
+  background-color: #f5f5f5;
+}
+
+/* Set default text color */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #000000;
+}
+p {
+  color: #101010;
+}
+h6 {
+  padding: 0px 150px 0px 150px;
+  color: #000000;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+li {
+  color: #101010;
+}
+
+/* Set default link styles */
+a {
+  color: #101010;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+// Search Bar
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  margin-bottom: 10px;
+  flex-direction: column;
+
+  input {
+    width: 100%;
+    max-width: 30rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  button {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    width: 30%;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: darken(#007bff, 10%);
+    }
+  }
+}
+
+
+
+
+// Header Component
+.header {
+  background-color: #fff;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header__logo {
+  height: 50px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-item {
+  font-size: 16px;
+  margin-left: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.header__nav-item--active {
+  color: #333;
+  font-weight: bold;
+}
+
+// Footer Component
+.footer {
+  background-color: #007bff;
+  padding: 20px 50px;
+  position: relative;
+  margin-top: 30px;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+}
+
+.footer__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer__section {
+  width: 33.33%;
+  padding-right: 50px;
+}
+
+.footer__section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.footer__social-icons {
+  padding: auto;
+}
+.footer__section-item {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #666;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+/* Homepage */
+
+.homepage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .property-card {
+    margin-bottom: 2rem;
+  }
+}
+
+// Property Form
+.property-form {
+  max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.6);
+    background: transparent;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+      border: 2px solid $color-gray-light;
+      border-radius: 0.5rem;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: bold;
+    color: $color-white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken(#007bff, 15%);
+    }
+  }
+
+  .error {
+    color: $color-danger;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .success {
+    color: $color-success;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+}
+
+
+/* Property Detail Page */
+
+.property-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .property-images {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .property-details {
+    width: 100%;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    .description {
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .feature {
+        width: 48%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

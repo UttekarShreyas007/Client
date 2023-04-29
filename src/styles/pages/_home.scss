@@ -1,0 +1,102 @@
+/* Home page styles */
+
+.home {
+  height: 100vh;
+  background-image: url("https://images.zenu.com.au/1200-min/mdiikrm6g1djfdiio18pif7j9lak744j.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  opacity: 0.9;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0069d9;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .property-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+    align-items: center;
+
+    .property-card {
+      background-color: $color-white;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+
+      .property-image {
+        height: 100px;
+        width: 80%;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .property-description {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .property-price {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .property-address {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .load-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    button {
+      background-color: $color-primary;
+      color: $color-white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: darken($color-primary, 10%);
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+/* Animation mixins */
+@mixin fade-in($duration: 0.5s) {
+    animation: fadeIn $duration ease;
+  }
+  
+  @mixin fade-out($duration: 0.5s) {
+    animation: fadeOut $duration ease;
+  }
+  
+  /* Keyframe animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  

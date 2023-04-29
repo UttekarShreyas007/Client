@@ -1,0 +1,65 @@
+// Grays
+$color-gray-lightest: #F9FAFB;
+$color-gray-lighter: #F4F6F8;
+$color-gray-light: #CBD5E1;
+$color-gray: #7B8794;
+$color-gray-dark: #374151;
+$color-gray-darker: #1F2937;
+$color-gray-darkest: #111827;
+
+// Primary
+$color-primary: #6B7280;
+
+// Secondary
+$color-secondary: #22A6B3;
+
+// Additional colors
+$color-red: #EF4444;
+$color-green: #10B981;
+$color-orange: #F97316;
+$color-purple: #8B5CF6;
+
+// Custom colors
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-grey-dark: #4B5563;
+$color-grey-light: #8a96a8;
+$color-danger: #ff4136;
+$color-success: #27ae60;
+$primary-color: #007bff;
+$color-primary-dark: #0056b3;
+$color-background: #0056b3;
+$color-background-light:#b910a2;
+
+/* Fonts */
+$font-primary: 'Poppins', sans-serif;
+
+/* Font Sizes */
+$font-size-base: 16px;
+
+/* Line Heights */
+$line-height-base: 1.5;
+
+/* Breakpoints */
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+/* Grid */
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+/* Spacing */
+$spacer: 1rem;
+$spacer-half: $spacer / 2;
+$spacer-quarter: $spacer / 4;
+$spacer-double: $spacer * 2;
+
+/* Border radius */
+$border-radius: 5px;
+
+/* Box Shadows */
+$box-shadow-base: 0px 2px 4px rgba($color-black, 0.2);
+$box-shadow-hover: 0px 4px 8px rgba($color-black, 0.2);

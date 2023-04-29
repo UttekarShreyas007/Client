@@ -1,0 +1,65 @@
+.signup-form {
+    margin-top: 2rem;
+  
+    h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+  
+    .form-group {
+      margin-bottom: 1.5rem;
+  
+      label {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+  
+      input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.4rem;
+        border: 2px solid $color-gray-light;
+        border-radius: 0.5rem;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          outline: none;
+          border-color: $color-primary;
+        }
+      }
+    }
+  
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: $color-white;
+      background-color: $color-primary;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: darken($color-primary, 10%);
+      }
+    }
+  
+    .error {
+      color: $color-danger;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+  
+    .success {
+      color: $color-success;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+  }
+  

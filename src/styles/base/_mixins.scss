@@ -1,0 +1,58 @@
+// Spacing
+@mixin spacer($property, $amount: 1) {
+    #{$property}: ($amount * 10px);
+  }
+  
+  // Flexbox
+  @mixin flex($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+  }
+  
+  // Typography
+  @mixin text-overflow() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  // Responsive
+  $screen-xs-max: 767px;
+  $screen-sm-min: 768px;
+  $screen-sm-max: 991px;
+  $screen-md-min: 992px;
+  $screen-md-max: 1199px;
+  $screen-lg-min: 1200px;
+  
+  @mixin media-breakpoint-up($size) {
+    @media (min-width: $size) {
+      @content;
+    }
+  }
+  
+  @mixin media-breakpoint-down($size) {
+    @media (max-width: $size) {
+      @content;
+    }
+  }
+  
+  @mixin media-breakpoint-between($min-size, $max-size) {
+    @media (min-width: $min-size) and (max-width: $max-size) {
+      @content;
+    }
+  }
+  
+  @mixin nav-link {
+    .nav-link {
+      color: $color-white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        text-shadow: 2px 2px rgb(0, 0, 0);
+      }
+    }
+  }
