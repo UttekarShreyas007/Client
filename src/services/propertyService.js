@@ -1,7 +1,7 @@
 import axios from "axios";
 import requestApi from "../lib/requestApi";
 
-const BASE_URL = "http://localhost:5000/api/properties";
+const BASE_URL = `${process.env.REACT_APP_API_URL}/properties`;
 
 const getPropertyList = async () => {
   const response = await axios.get(BASE_URL);

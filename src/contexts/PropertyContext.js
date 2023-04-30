@@ -7,7 +7,7 @@ const PropertyContextProvider = (props) => {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/properties')
+    axios.get(`${process.env.REACT_APP_API_URL}/properties`)
       .then((response) => {
         setProperties(response.data);
       })
@@ -17,7 +17,7 @@ const PropertyContextProvider = (props) => {
   }, []);
 
   const addProperty = (newProperty) => {
-    axios.post('http://localhost:5000/api/properties', newProperty)
+    axios.post(`${process.env.REACT_APP_API_URL}/properties`, newProperty)
       .then((response) => {
         setProperties([...properties, response.data]);
       })
@@ -27,7 +27,7 @@ const PropertyContextProvider = (props) => {
   };
 
   const updateProperty = (id, updatedProperty) => {
-    axios.put(`http://localhost:5000/api/properties/${id}`, updatedProperty)
+    axios.put(`${process.env.REACT_APP_API_URL}/properties/${id}`, updatedProperty)
       .then((response) => {
         const updatedProperties = properties.map((property) => {
           if (property._id === id) {
@@ -44,7 +44,7 @@ const PropertyContextProvider = (props) => {
   };
 
   const deleteProperty = (id) => {
-    axios.delete(`http://localhost:5000/api/properties/${id}`)
+    axios.delete(`${process.env.REACT_APP_API_URL}/properties/${id}`)
       .then((response) => {
         const updatedProperties = properties.filter((property) => property._id !== id);
         setProperties(updatedProperties);

@@ -24,7 +24,7 @@ const AgentDashboard = () => {
 
   const handlePropertyCreate = async (propertyData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/properties",
+      `${process.env.REACT_APP_API_URL}/properties`,
       propertyData
     );
     setProperties(response.data.properties);
