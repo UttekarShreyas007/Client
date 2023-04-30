@@ -6,7 +6,7 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/users").then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/users`).then((res) => {
       setUsers(res.data);
     });
   }, []);

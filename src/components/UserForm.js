@@ -19,11 +19,11 @@ const UserForm = ({ updateUser, setEditing, user }) => {
     event.preventDefault();
     try {
       if (user) {
-        await axios.put(`http://localhost:5000/api/users/${user._id}`, formData);
+        await axios.put(`${process.env.REACT_APP_API_URL}/users/${user._id}`, formData);
         updateUser({ ...formData, _id: user._id });
         setEditing(false);
       } else {
-        await axios.post('http://localhost:5000/api/users', formData);
+        await axios.post('${process.env.REACT_APP_API_URL}/users', formData);
         setFormData({
           name: '',
           email: '',
