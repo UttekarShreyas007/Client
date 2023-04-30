@@ -4,22 +4,24 @@ const API_URL = `${process.env.REACT_APP_API_URL}/auth/`;
 
 class AuthService {
   
-  
-  login(email, password) {
-    
-   return axios
-      .post(API_URL + "login", {
+login(email, password) {
+    return axios.post(
+      API_URL + "login",
+      {
+        email,
+        password,
+      },
+      {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
-        email, password
-
-
-      },{ withCredentials: true}  )
-    
+        withCredentials: true,
+      }
+    );
   }
-
+  
+  
   register(username, email, password) {
     return axios.post(API_URL + "signup", {
       username,
