@@ -14,6 +14,7 @@ login(email, password) {
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
+          'Access-Control-Expose-Headers': '*',
           "Content-Type": "application/json",
         },
         withCredentials: true,
