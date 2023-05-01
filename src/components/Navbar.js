@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 import styled from "styled-components";
 import localforage from "localforage";
 
-
 const Navbar = () => {
   const navigate = useNavigate();
-  const [role, setRole] = useState('general')
+  const [role, setRole] = useState("general");
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
-    localforage.getItem('userRole').then((res)=>{
-      setRole(res)
-    })
-  }, [navigate])
-  
+    isLoggedIn().then((res) => {
+      setLoggedIn(res);
+    });
+    localforage.getItem("userRole").then((res) => {
+      setRole(res);
+    });
+  }, [navigate]);
+
   const handleLogout = () => {
     try {
-      authLogout()
+      authLogout();
       navigate("/login");
-    } catch(err) {
-
+    } catch (err) {
       console.log("Failed to log out", err);
     }
   };
 
-  const auth = checkAuthentication();
-  // const role = localStorage.getItem("userRole") || "general";
   return (
     <nav className="navbar">
       <div>
@@ -49,42 +49,48 @@ const Navbar = () => {
             Properties
           </Link>
         </li>
-        {
-          role === 'client' ? (
-            <><li className="nav-item">
-            <Link className="nav-link" to="/interested-properties">
-            My Interested Properties
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/clientDashboard">
-            Dashboard
-            </Link>
-          </li>
+        {role === "client" ? (
+          <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/interested-properties">
+                My Interested Properties
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/clientDashboard">
+                Dashboard
+              </Link>
+            </li>
           </>
-          ) : role === 'agent' ? (<><li className="nav-item">
-          <Link className="nav-link" to="/my-properties">
-          View My Properties
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/client-list">
-          Interested Clients
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/add-property">
-          Add Property
-          </Link>
-        </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/agentDashboard">
-            Dashboard
-            </Link>
-          </li>
-        </>) : (<></>)
-        }
-        {auth ? (
+        ) : role === "agent" ? (
+          <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/my-properties">
+                View My Properties
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/client-list">
+                Interested Clients
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/add-property">
+                Add Property
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/agentDashboard">
+                Dashboard
+              </Link>
+            </li>
+          </>
+        ) : (
+          <></>
+        )}
+        {loggedIn ? (
+          <DashboardLogout onClick={handleLogout}>Logout</DashboardLogout>
+        ) : (
           <>
             <li className="nav-item">
               <Link className="nav-link" to="/login">
@@ -97,8 +103,6 @@ const Navbar = () => {
               </Link>
             </li>
           </>
-        ) : (
-          <DashboardLogout onClick={handleLogout}>Logout</DashboardLogout>
         )}
       </ul>
     </nav>

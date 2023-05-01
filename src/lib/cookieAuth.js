@@ -1,25 +1,22 @@
-import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import { logout } from "../redux/actions/authActions";
 import localforage from "localforage";
 
-export const checkAuthentication = () => {
-  const token = Cookies.get("token");
+export const isLoggedIn = async () => {
+  const token = await localforage.getItem("token");
   if (token) {
     const decodedToken = jwt_decode(token);
     const currentTime = Date.now() / 1000;
     if (!decodedToken.exp > currentTime) {
-     return true;
-    }else{
-        return false;
+      return false;
+    } else {
+      return true;
     }
   } else {
-    return true;
+    return false;
   }
 };
-export const authLogout = () =>{
-  // localStorage.clear();
+export const authLogout = () => {
   localforage.clear();
-  Cookies.remove('token')
-  logout()
-}
+  logout();
+};

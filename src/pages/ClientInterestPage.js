@@ -5,7 +5,7 @@ import PropertyList from "../components/PropertyList";
 import styled from "styled-components";
 import { GET_PROPERTIES } from "../redux/actions/types";
 import { useNavigate } from "react-router-dom";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -17,11 +17,12 @@ const ClientInterestPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import requestApi from "../lib/requestApi";
 import { useNavigate } from "react-router-dom";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 import localforage from "localforage";
 
 const ClientsList = () => {
@@ -18,11 +18,12 @@ const ClientsList = () => {
   }, [navigate]);
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);

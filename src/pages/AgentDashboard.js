@@ -5,16 +5,17 @@ import styled from "styled-components";
 import PropertyForm from "./PropertyForm";
 import axios from "axios";
 import PropertyCard from "../components/PropertyCard";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 const AgentDashboard = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);
@@ -32,27 +33,29 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="container"> 
-    <DashboardContainer>
-      <DashboardHeader>
-        <DashboardTitle>Agent Dashboard</DashboardTitle>
-      </DashboardHeader>
-      <DashboardBody>
-        <WelcomeMessage>Welcome, {user && user.name}!</WelcomeMessage>
-        <AddPropertyLink to="/properties">View All Properties</AddPropertyLink>
-        {formVisible && <PropertyForm onSubmit={handlePropertyCreate} />}
-        {properties.length > 0 && (
-          <>
-            <h1>Your properties:</h1>
-            <div className="property-card-container">
-              {properties.map((property) => (
-                <PropertyCard key={property._id} property={property} />
-              ))}
-            </div>
-          </>
-        )}
-      </DashboardBody>
-    </DashboardContainer>
+    <div className="container">
+      <DashboardContainer>
+        <DashboardHeader>
+          <DashboardTitle>Agent Dashboard</DashboardTitle>
+        </DashboardHeader>
+        <DashboardBody>
+          <WelcomeMessage>Welcome, {user && user.name}!</WelcomeMessage>
+          <AddPropertyLink to="/properties">
+            View All Properties
+          </AddPropertyLink>
+          {formVisible && <PropertyForm onSubmit={handlePropertyCreate} />}
+          {properties.length > 0 && (
+            <>
+              <h1>Your properties:</h1>
+              <div className="property-card-container">
+                {properties.map((property) => (
+                  <PropertyCard key={property._id} property={property} />
+                ))}
+              </div>
+            </>
+          )}
+        </DashboardBody>
+      </DashboardContainer>
     </div>
   );
 };

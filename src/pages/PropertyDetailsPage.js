@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import requestApi from "../lib/requestApi";
 import Map from "../components/Map";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 
 const PropertyDetailsPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);

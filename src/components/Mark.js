@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import postApi from "../lib/postApi";
 const Mark = ({ propertyId, mark }) => {
-  console.log(mark, 'mark')
   const [activeMark, setActiveMark] = useState(mark);
   const handleClick = () => {
     postApi(`/users/markinterested/${propertyId}`).then((res) => {

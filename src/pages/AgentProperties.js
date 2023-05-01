@@ -3,7 +3,7 @@ import PropertyCard from "../components/PropertyCard";
 import requestApi from "../lib/requestApi";
 import deleteApi from "../lib/deleteApi";
 import { useNavigate } from "react-router-dom";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 import localforage from "localforage";
 
 const AgentProperties = () => {
@@ -12,22 +12,22 @@ const AgentProperties = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);
 
   useEffect(() => {
-    localforage.getItem("userId").then((resp)=>{
+    localforage.getItem("userId").then((resp) => {
       requestApi(`/properties/agent/${resp}`).then((res) => {
         setProperties(res.data);
       });
-    })
-    
+    });
   }, []);
 
   const handleSearchQueryChange = (event) => {
@@ -57,21 +57,21 @@ const AgentProperties = () => {
 
   return (
     <div className="container">
-    <div className="searchbar">
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={handleSearchQueryChange}
-        placeholder="Search properties..."
-      />
-      {filteredProperties.map((property) => (
-        <PropertyCard
-          key={property._id}
-          property={property}
-          deleteFunction={handlePropertyDelete}
+      <div className="searchbar">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+          placeholder="Search properties..."
         />
-      ))}
-    </div>
+        {filteredProperties.map((property) => (
+          <PropertyCard
+            key={property._id}
+            property={property}
+            deleteFunction={handlePropertyDelete}
+          />
+        ))}
+      </div>
     </div>
   );
 };

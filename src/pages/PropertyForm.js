@@ -3,7 +3,7 @@ import postApi from "../lib/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 import requestApi from "../lib/requestApi";
 import updateApi from "../lib/updateApi";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 import localforage from "localforage";
 import validateForm from "../utils/formValidations";
 
@@ -19,11 +19,12 @@ const PropertyForm = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);
@@ -70,7 +71,6 @@ const PropertyForm = () => {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
       // submit form data to server
-      console.log('Form data:', formData);
     } else {
       setErrors(validationErrors);
     }
@@ -140,7 +140,9 @@ const PropertyForm = () => {
             value={formData.description}
             onChange={handleChange}
           />
-          {errors.description && <span className="error">{errors.description}</span>}
+          {errors.description && (
+            <span className="error">{errors.description}</span>
+          )}
         </div>
         <div className="form-group">
           <input
@@ -200,7 +202,7 @@ const PropertyForm = () => {
             value={formData.image}
             onChange={handleChange}
           />
-          {errors.image && <span className="error">{errors.image  }</span>}
+          {errors.image && <span className="error">{errors.image}</span>}
         </div>
         {id === undefined ? (
           <button type="submit" className="submit-btn">

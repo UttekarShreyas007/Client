@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authActions";
 import { SET_USER } from "../redux/actions/types";
 import localforage from "localforage";
+import { isLoggedIn } from "../lib/cookieAuth";
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -24,11 +25,13 @@ const SignInPage = () => {
     login(email, password)
       .then((response) => {
         const userObject = response.data.userObj;
+        const token = response.data.token;
         dispatch({ type: SET_USER, payload: userObject });
-        // localStorage.setItem("userId", userObject._id);
-        // localStorage.setItem("userRole", userObject.role);
+
+        localforage.setItem("token", token);
         localforage.setItem("userId", userObject._id);
         localforage.setItem("userRole", userObject.role);
+
         const userRole = userObject.role;
         if (userRole === "agent") {
           navigate("/agentDashboard");
@@ -49,7 +52,7 @@ const SignInPage = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
-          required
+            required
             type="email"
             name="email"
             id="email"
@@ -60,7 +63,7 @@ const SignInPage = () => {
         </div>
         <div className="form-group">
           <input
-          required
+            required
             type="password"
             name="password"
             id="password"

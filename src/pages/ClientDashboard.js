@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { authLogout, checkAuthentication } from "../lib/cookieAuth";
+import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 
 const ClientDashboard = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      const auth = checkAuthentication();
-      if (auth) {
-        authLogout();
-        navigate("/login");
-      }
+      isLoggedIn().then((res) => {
+        if (!res) {
+          authLogout();
+          navigate("/login");
+        }
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, [navigate]);
@@ -20,15 +21,17 @@ const ClientDashboard = () => {
 
   return (
     <div className="container">
-    <DashboardContainer>
-      <DashboardHeader>
-        <DashboardTitle>ClientDashboard</DashboardTitle>
-      </DashboardHeader>
-      <DashboardBody>
-        <WelcomeMessage>Welcome, {user.name}!</WelcomeMessage>
-        <AddPropertyLink to="/properties">View All Properties</AddPropertyLink>
-      </DashboardBody>
-    </DashboardContainer>
+      <DashboardContainer>
+        <DashboardHeader>
+          <DashboardTitle>ClientDashboard</DashboardTitle>
+        </DashboardHeader>
+        <DashboardBody>
+          <WelcomeMessage>Welcome, {user.name}!</WelcomeMessage>
+          <AddPropertyLink to="/properties">
+            View All Properties
+          </AddPropertyLink>
+        </DashboardBody>
+      </DashboardContainer>
     </div>
   );
 };
