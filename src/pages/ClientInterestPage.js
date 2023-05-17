@@ -37,7 +37,7 @@ const ClientInterestPage = () => {
 
   return (
     <div className="container">
-      <Title>Properties You Have Shown Interest In</Title>
+      <Title>Interested Properties</Title>
       {loading ? <p>Loading...</p> : <PropertyList properties={properties} />}
     </div>
   );

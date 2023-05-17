@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import PropertyForm from "./PropertyForm";
-import axios from "axios";
-import PropertyCard from "../components/PropertyCard";
 import { authLogout, isLoggedIn } from "../lib/cookieAuth";
 const AgentDashboard = () => {
   const navigate = useNavigate();
@@ -20,17 +17,6 @@ const AgentDashboard = () => {
     return () => clearInterval(interval);
   }, [navigate]);
   const user = useSelector((state) => state.auth.user);
-  const [formVisible, setFormVisible] = useState(false);
-  const [properties, setProperties] = useState([]);
-
-  const handlePropertyCreate = async (propertyData) => {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/properties`,
-      propertyData
-    );
-    setProperties(response.data.properties);
-    setFormVisible(false);
-  };
 
   return (
     <div className="container">
@@ -43,17 +29,6 @@ const AgentDashboard = () => {
           <AddPropertyLink to="/properties">
             View All Properties
           </AddPropertyLink>
-          {formVisible && <PropertyForm onSubmit={handlePropertyCreate} />}
-          {properties.length > 0 && (
-            <>
-              <h1>Your properties:</h1>
-              <div className="property-card-container">
-                {properties.map((property) => (
-                  <PropertyCard key={property._id} property={property} />
-                ))}
-              </div>
-            </>
-          )}
         </DashboardBody>
       </DashboardContainer>
     </div>

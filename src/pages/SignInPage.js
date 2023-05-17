@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authActions";
 import { SET_USER } from "../redux/actions/types";
 import localforage from "localforage";
-import { isLoggedIn } from "../lib/cookieAuth";
 
 const SignInPage = () => {
   const dispatch = useDispatch();

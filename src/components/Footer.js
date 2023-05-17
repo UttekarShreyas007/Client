@@ -23,7 +23,6 @@ const Footer = () => {
             <ul className="footer__list">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/properties">Properties</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
           <div className="footer__section">

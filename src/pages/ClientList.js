@@ -40,17 +40,17 @@ const ClientsList = () => {
       <table>
         <thead>
           <tr>
-            <th>Property Title</th>
             <th>Client Name</th>
             <th>Client Email</th>
+            <th>Property Title</th>
           </tr>
         </thead>
         <tbody>
           {clients.map((client, index) => (
             <tr key={index}>
-              <td>{client.property}</td>
               <td>{client.name}</td>
               <td>{client.email}</td>
+              <td>{client.property}</td>
             </tr>
           ))}
         </tbody>
