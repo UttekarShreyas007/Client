@@ -46,8 +46,7 @@ const DashboardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 20px 50px;
+  padding: 10px;
   background-color: #f0f0f0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
@@ -56,6 +55,7 @@ const DashboardTitle = styled.h1`
   font-size: 24px;
   font-weight: bold;
   width: 100%;
+  margin-top: 10px;
 `;
 
 const DashboardBody = styled.div`
