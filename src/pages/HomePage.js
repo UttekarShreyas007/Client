@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 function HomePage() {
   const navigate = useNavigate();
 
@@ -8,6 +7,8 @@ function HomePage() {
     navigate("/properties");
   };
   return (
+    <>
+    <div>
     <div className="home">
       <div className="text">
       <h1>Welcome to REWA</h1>
@@ -34,6 +35,8 @@ function HomePage() {
       </button>
       </div>
     </div>
+    </div>
+    </>
   );
 }
 

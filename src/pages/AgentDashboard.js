@@ -39,6 +39,11 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?cs=srgb&dl=pexels-jessica-bryant-1370704.jpg&fm=jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
 `;
 
 const DashboardHeader = styled.div`
@@ -70,6 +75,7 @@ const WelcomeMessage = styled.h2`
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 30px;
+  text-align: center;
 `;
 
 const AddPropertyLink = styled(Link)`

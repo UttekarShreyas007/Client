@@ -1,5 +1,3 @@
-// components/ClientsList.js
-
 import React, { useState, useEffect } from "react";
 import requestApi from "../lib/requestApi";
 import { useNavigate } from "react-router-dom";

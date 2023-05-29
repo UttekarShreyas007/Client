@@ -1,22 +1,30 @@
 /* Home page styles */
 
 .home {
-  height: 80vh;
+  height: auto;
   background-image: url("https://images.zenu.com.au/1200-min/mdiikrm6g1djfdiio18pif7j9lak744j.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  margin-bottom: 500px;
   opacity: 0.9;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 856px) {
+      
+    margin-bottom: 10px;
+  
+}
 
   .text {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 10%;
+    
   }
 
   .button {
@@ -35,6 +43,20 @@
 
   h1 {
     font-size: 3rem;
+    text-align: center;
+    @media (max-width: 856px) {
+      
+      padding: 0px 20px;
+    
+  }
+  }
+  h6{
+    padding: 0px 150px;
+    @media (max-width: 856px) {
+      
+      padding: 0px 20px;
+    
+  }
   }
 
   .property-list {
@@ -96,6 +118,51 @@
 
       &:hover {
         background-color: darken($color-primary, 10%);
+      }
+    }
+  }
+}
+/* _home.scss */
+
+/* Mobile-first styles */
+
+.home-container {
+  padding: 20px;
+  
+  .property-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .home-container {
+    .property-card {
+      width: 50%;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+
+      h2 {
+        padding: 0 20px; /* Add padding to the h2 element */
+      }
+    }
+  }
+}
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .home-container {
+    .property-card {
+      width: calc(33.3333% - 20px);
+      margin-right: 20px;
+      margin-bottom: 20px;
+      
+      &:nth-child(3n) {
+        margin-right: 0;
       }
     }
   }

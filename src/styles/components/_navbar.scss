@@ -1,34 +1,97 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  background-color: $primary-color;
+}
+
+.navbar-brand {
+  color: $color-white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 2rem;
+  @include nav-link;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  margin-right: 1.5rem;
+  @include nav-link;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.Ham-menu{
+  display: none;
+}
+
+.button-btn{
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
+@media only screen and (max-width: 856px) {
+  .navbar {
+    padding: 1rem;
+    
+  }
+  .navbar-nav{
+    position: absolute;
+    top: 118px;
+    right: 0;
+    display: block;
     background-color: $primary-color;
-  
-    .navbar-brand {
-      color: $color-white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      margin-right: 2rem;
-      @include nav-link;
-    } 
-  
-    .navbar-nav {
-      display: flex;
-  
-      .nav-item {
-        margin-right: 1.5rem;
-        @include nav-link;
-        display: flex;
-        align-items: center;
-  
-        &:last-child {
-          margin-right: 0;
-        }
-  
-        
-      }
-    }
+    z-index: 100;
+    width: 100%;
+    padding: 0 15px;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  .slide{
+    max-height: fit-content;
+    opacity: 1;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    justify-content: center;
   }
   
+
+  .Ham-menu{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
+}
+

@@ -1,54 +1,87 @@
-.footerpage {
-  background-color: $color-primary;
-  color: $color-white;
 
-  .footer__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Footer Component */
+
+.footer {
+  background-color: #007bff;
+  padding: 20px 50px;
+  position: absolute;
+  margin-top: 30px;
+  top: 90%;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+
+  @media (max-width: 856px) {
+    padding: 20px;
+    position: static;
+    margin-top: 0;
+  }
+}
+
+.footer__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+
+  @media (max-width: 856px) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media (max-width: 856px) {
     flex-wrap: wrap;
-    padding: 2rem 0;
+  }
+}
 
-    .footer__section {
-      flex: 1 1 300px;
-      margin-bottom: 2rem;
+.footer__section {
+  width: 33.33%;
+  padding-right: 50px;
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+  @media (max-width: 856px) {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+}
 
-      .footer__heading {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
+.footer__section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
 
-      .footer__list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+  @media (max-width: 856px) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
 
-        li {
-          margin-bottom: 0.5rem;
-          font-size: 1.2rem;
-        }
+.footer__social-icons {
+  padding: auto;
 
-        a {
-          color: $color-white;
-          text-decoration: none;
+  @media (max-width: 856px) {
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
 
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
+.footer__section-item {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #666;
+
+  &:hover {
+    color: #333;
   }
 
-  .footer__bottom {
-    background-color: $color-primary-dark;
-    color: $color-white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.2rem;
+  @media (max-width: 856px) {
+    font-size: 14px;
   }
 }

@@ -40,7 +40,7 @@ const PropertyCard = ({ property, deleteFunction = "" }) => {
         <span className="property-title">{property.title}</span>
         <p className="property-address">{property.description}</p>
         <p className="property-price">Price: ${property.price}</p>
-        <div>
+        <div className="bttn">
           <Link to={`/propertiesDetails/${property._id}`} className="btn">
             View Details
           </Link>

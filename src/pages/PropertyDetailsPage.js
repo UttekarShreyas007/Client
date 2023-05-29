@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import requestApi from "../lib/requestApi";
+import styled from "styled-components";
 import Map from "../components/Map";
 import { authLogout, isLoggedIn } from "../lib/cookieAuth";
+
+
+const Title = styled.h1`
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+`;
 
 const PropertyDetailsPage = () => {
   const navigate = useNavigate();
@@ -33,9 +41,10 @@ const PropertyDetailsPage = () => {
   }, [id]);
 
   return (
-    <div>
-      <h1>Property Details</h1>
+    <div className="property">
+      
       <div className="property-card">
+      <Title>Property Details</Title>
         <div className="property-image">
           <img
             src={property.image}
